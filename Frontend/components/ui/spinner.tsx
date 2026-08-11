@@ -1,7 +1,22 @@
-export function Spinner() {
+import * as React from 'react';
+import { Loader2 } from 'lucide-react';
+import { cn } from './cn';
+
+type SpinnerProps = {
+  size?: number;
+  className?: string;
+  label?: string;
+};
+
+export function Spinner({ size = 18, className, label = 'Loading' }: SpinnerProps) {
   return (
-    <div className="inline-flex h-10 w-10 items-center justify-center">
-      <div className="h-6 w-6 animate-spin rounded-full border-4 border-slate-600 border-t-sky-400" />
-    </div>
+    <span role="status" aria-live="polite" className={cn('inline-flex items-center gap-2', className)}>
+      <Loader2
+        className="animate-spin"
+        style={{ width: size, height: size }}
+        aria-hidden
+      />
+      <span className="sr-only">{label}</span>
+    </span>
   );
 }
