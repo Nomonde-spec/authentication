@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { Logo } from '../../components/auth/Logo';
 import { BackgroundEffects } from '../../components/auth/BackgroundEffects';
+import { ThemeToggle } from '../../components/ui/theme-toggle';
 import Link from 'next/link';
 import { useState } from 'react';
 import { registerUser } from '../../services/authService';
@@ -33,8 +34,11 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="relative min-h-screen bg-[#0B1120] text-white overflow-hidden">
+    <div className="relative min-h-screen bg-background text-foreground overflow-hidden">
       <BackgroundEffects />
+      <div className="absolute top-6 right-6 z-10">
+        <ThemeToggle />
+      </div>
       <div className="mx-auto flex min-h-screen w-full max-w-[1400px] items-center justify-center px-6 py-20">
         <div className="w-full max-w-[540px]">
           <motion.div

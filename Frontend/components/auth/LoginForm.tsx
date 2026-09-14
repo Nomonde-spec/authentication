@@ -63,41 +63,41 @@ export function LoginForm({ onLoginStart }: LoginFormProps) {
   return (
     <form onSubmit={handleSubmit} className="mt-6 grid gap-4">
       <label className="flex w-full flex-col">
-        <span className="mb-2 text-sm text-slate-300">Email address</span>
+        <span className="mb-2 text-sm text-muted-foreground">Email address</span>
         <div className="relative">
-          <span className="absolute left-3 top-3 text-slate-400"><Mail size={16} /></span>
+          <span className="absolute left-3 top-3 text-muted-foreground"><Mail size={16} /></span>
           <input
             aria-label="Email address"
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="you@example.com"
-            className="w-full rounded-2xl border border-white/10 bg-white/5 px-12 py-3 text-white placeholder:text-slate-400 transition duration-200 focus:border-[#4F7BFF] focus:bg-white/10 focus:outline-none focus:ring-2 focus:ring-[#4F7BFF]/40"
+            className="w-full rounded-2xl border border-border bg-secondary px-12 py-3 text-foreground placeholder:text-muted-foreground transition duration-200 focus:border-[#4F7BFF] focus:outline-none focus:ring-2 focus:ring-[#4F7BFF]/40"
           />
         </div>
-        {!emailValid && email.length > 0 && <span className="mt-2 text-xs text-rose-400">Enter a valid email.</span>}
+        {!emailValid && email.length > 0 && <span className="mt-2 text-xs text-rose-500">Enter a valid email.</span>}
       </label>
 
       <label className="flex w-full flex-col">
         <div className="flex items-center justify-between">
-          <span className="mb-2 text-sm text-slate-300">Password</span>
-          <a className="text-sm text-slate-400 hover:underline" href="/forgot">Forgot?</a>
+          <span className="mb-2 text-sm text-muted-foreground">Password</span>
+          <a className="text-sm text-muted-foreground hover:underline" href="/forgot">Forgot?</a>
         </div>
         <div className="relative">
-          <span className="absolute left-3 top-3 text-slate-400"><Lock size={16} /></span>
+          <span className="absolute left-3 top-3 text-muted-foreground"><Lock size={16} /></span>
           <input
             aria-label="Password"
             type={show ? 'text' : 'password'}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             placeholder="Enter your password"
-            className="w-full rounded-2xl border border-white/10 bg-white/5 px-12 py-3 text-white placeholder:text-slate-400 transition duration-200 focus:border-[#4F7BFF] focus:bg-white/10 focus:outline-none focus:ring-2 focus:ring-[#4F7BFF]/40"
+            className="w-full rounded-2xl border border-border bg-secondary px-12 py-3 text-foreground placeholder:text-muted-foreground transition duration-200 focus:border-[#4F7BFF] focus:outline-none focus:ring-2 focus:ring-[#4F7BFF]/40"
           />
           <button
             type="button"
             aria-label={show ? 'Hide password' : 'Show password'}
             onClick={() => setShow((s) => !s)}
-            className="absolute right-3 top-3 inline-flex items-center justify-center text-slate-300"
+            className="absolute right-3 top-3 inline-flex items-center justify-center text-muted-foreground"
           >
             {show ? <EyeOff size={16} /> : <Eye size={16} />}
           </button>
@@ -105,13 +105,13 @@ export function LoginForm({ onLoginStart }: LoginFormProps) {
       </label>
 
       <div className="flex items-center justify-between">
-        <label className="inline-flex items-center gap-2 text-sm text-slate-300">
-          <input type="checkbox" checked={remember} onChange={(e) => setRemember(e.target.checked)} className="h-4 w-4 rounded border-white/20 bg-transparent text-slate-100" />
+        <label className="inline-flex items-center gap-2 text-sm text-muted-foreground">
+          <input type="checkbox" checked={remember} onChange={(e) => setRemember(e.target.checked)} className="h-4 w-4 rounded border-border bg-secondary text-foreground" />
           Remember me
         </label>
       </div>
 
-      {error && <div className="rounded-2xl border border-rose-400/20 bg-rose-500/10 px-4 py-3 text-sm text-rose-200">{error}</div>}
+      {error && <div className="rounded-2xl border border-rose-400/20 bg-rose-500/10 px-4 py-3 text-sm text-rose-600 dark:text-rose-200">{error}</div>}
 
       <button
         disabled={!formValid || loading}

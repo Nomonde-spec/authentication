@@ -1,6 +1,6 @@
 'use client';
 
-import { ReactNode, useState } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Sidebar } from './Sidebar';
 import { Topbar } from './Topbar';
@@ -14,11 +14,24 @@ type DashboardLayoutProps = {
 export function DashboardLayout({ children, activeSection, onSectionChange }: DashboardLayoutProps) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 1024) {
+        setSidebarOpen(false);
+      }
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
-    <div className="min-h-screen bg-[#0B1120] text-white">
-      <div className="mx-auto flex min-h-screen w-full max-w-[1600px] flex-col gap-6 px-4 py-6 lg:flex-row lg:px-8 lg:py-8">
+    <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
+      <div className="mx-auto flex min-h-screen w-full max-w-full flex-col lg:max-w-[1600px] lg:flex-row lg:gap-6">
         <AnimatePresence>
-          {sidebarOpen ? (
+          {sidebarOpen && (
             <motion.div
               className="fixed inset-0 z-40 bg-black/50 lg:hidden"
               initial={{ opacity: 0 }}
@@ -26,7 +39,7 @@ export function DashboardLayout({ children, activeSection, onSectionChange }: Da
               exit={{ opacity: 0 }}
               onClick={() => setSidebarOpen(false)}
             />
-          ) : null}
+          )}
         </AnimatePresence>
 
         <Sidebar
@@ -46,9 +59,9 @@ export function DashboardLayout({ children, activeSection, onSectionChange }: Da
           onSectionChange={onSectionChange}
         />
 
-        <div className="flex min-h-screen w-full flex-1 flex-col gap-6">
+        <div className="flex w-full flex-1 flex-col gap-4 px-4 py-6 sm:gap-6 sm:px-6 lg:gap-6 lg:px-0 lg:py-8">
           <Topbar onToggleSidebar={() => setSidebarOpen((prev) => !prev)} />
-          <main className="flex flex-1 flex-col gap-6">{children}</main>
+          <main className="flex flex-1 flex-col gap-4 sm:gap-6">{children}</main>
         </div>
       </div>
     </div>

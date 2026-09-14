@@ -6,19 +6,19 @@ import { Card } from '../ui/card';
 
 export function SecurityPanel() {
   return (
-    <Card className="grid gap-6 overflow-hidden rounded-[28px] border border-white/10 bg-[#182235]/95 p-6 shadow-[0_35px_90px_-50px_rgba(0,0,0,0.65)] lg:grid-cols-[1.4fr_1fr]">
+    <Card className="grid gap-6 overflow-hidden rounded-[28px] border border-white/10 bg-[#182235]/95 p-6 md:p-8 shadow-[0_35px_90px_-50px_rgba(0,0,0,0.65)] md:grid-cols-[1.4fr_1fr]">
       <div className="flex flex-col justify-between gap-6">
         <div>
           <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm text-slate-300">
             <Shield size={16} />
             Security
           </div>
-          <h2 className="mt-6 text-3xl font-semibold text-white">Protect your account</h2>
+          <h2 className="mt-6 text-2xl md:text-3xl font-semibold text-white">Protect your account</h2>
           <p className="mt-4 max-w-xl text-sm leading-7 text-slate-400">
             Two-factor authentication, session monitoring, and password updates are managed from this section.
           </p>
         </div>
-        <Button className="mt-auto inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#4F7BFF] via-[#6366F1] to-[#8B5CF6] px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-slate-900/40 transition duration-300 hover:brightness-110">
+        <Button className="mt-auto inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#4F7BFF] via-[#6366F1] to-[#8B5CF6] px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-slate-900/40 transition duration-300 hover:brightness-110 w-full md:w-auto justify-center md:justify-start">
           Go to Security
           <ArrowRight size={16} />
         </Button>

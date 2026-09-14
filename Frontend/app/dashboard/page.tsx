@@ -6,11 +6,12 @@ import { fetchProfile, logoutUser } from '../../services/authService';
 import { useAuthStore } from '../../store/authStore';
 import { Spinner } from '../../components/ui/spinner';
 import { DashboardLayout } from '../../components/dashboard';
-import { Welcome } from '../../components/dashboard/Welcome';
-import { SummaryCards } from '../../components/dashboard/SummaryCards';
-import { SecurityPanel } from '../../components/dashboard/SecurityPanel';
-import { RecentActivity } from '../../components/dashboard/RecentActivity';
-import { QuickActions } from '../../components/dashboard/QuickActions';
+import { OverviewSection } from '../../components/dashboard/sections/OverviewSection';
+import { ProfileSection } from '../../components/dashboard/sections/ProfileSection';
+import { SecuritySection } from '../../components/dashboard/sections/SecuritySection';
+import { SettingsSection } from '../../components/dashboard/sections/SettingsSection';
+import { ActivitySection } from '../../components/dashboard/sections/ActivitySection';
+import { HelpSection } from '../../components/dashboard/sections/HelpSection';
 
 export default function DashboardPage() {
   const router = useRouter();
@@ -42,6 +43,25 @@ export default function DashboardPage() {
     router.push('/login');
   };
 
+  const renderSection = () => {
+    switch (activeSection) {
+      case 'overview':
+        return <OverviewSection />;
+      case 'profile':
+        return <ProfileSection />;
+      case 'security':
+        return <SecuritySection />;
+      case 'settings':
+        return <SettingsSection />;
+      case 'activity':
+        return <ActivitySection />;
+      case 'help':
+        return <HelpSection />;
+      default:
+        return <OverviewSection />;
+    }
+  };
+
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
@@ -59,15 +79,7 @@ export default function DashboardPage() {
       {error ? (
         <div className="rounded-[28px] border border-white/10 bg-[#182235]/95 p-6 text-rose-400 shadow-[0_35px_90px_-50px_rgba(0,0,0,0.65)]">{error}</div>
       ) : (
-        <>
-          <Welcome />
-          <SummaryCards />
-          <SecurityPanel />
-          <div className="grid gap-6 xl:grid-cols-[1.5fr_0.85fr]">
-            <RecentActivity />
-            <QuickActions />
-          </div>
-        </>
+        renderSection()
       )}
     </DashboardLayout>
   );

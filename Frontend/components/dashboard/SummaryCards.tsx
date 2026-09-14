@@ -42,7 +42,7 @@ const cards = [
 
 export function SummaryCards() {
   return (
-    <section className="grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
+    <section className="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
       {cards.map((card) => {
         const Icon = card.icon;
         return (
@@ -52,12 +52,12 @@ export function SummaryCards() {
                 <p className="text-sm text-slate-400">{card.title}</p>
                 <h3 className="mt-4 text-2xl font-semibold text-white">{card.title}</h3>
               </div>
-              <div className="grid h-12 w-12 place-items-center rounded-3xl bg-[#111827] text-slate-200 shadow-sm">
+              <div className="grid h-12 w-12 place-items-center rounded-3xl bg-[#111827] text-slate-200 shadow-sm flex-shrink-0">
                 <Icon size={20} />
               </div>
             </div>
             <p className="mt-5 text-sm leading-6 text-slate-400">{card.description}</p>
-            <Button className={`mt-6 inline-flex items-center gap-2 rounded-full bg-gradient-to-r ${card.variant} px-4 py-3 text-sm font-semibold text-white shadow-lg shadow-slate-900/40 transition duration-300 hover:brightness-110`}>
+            <Button className={`mt-6 inline-flex items-center gap-2 rounded-full bg-gradient-to-r ${card.variant} px-4 py-3 text-sm font-semibold text-white shadow-lg shadow-slate-900/40 transition duration-300 hover:brightness-110 w-full justify-center`}>
               {card.button}
               <ArrowRight size={16} />
             </Button>

@@ -2,35 +2,57 @@
 
 import { useEffect, useState } from 'react';
 import { Moon, Sun } from 'lucide-react';
-import { Button } from './button';
 
 export function ThemeToggle() {
   const [theme, setTheme] = useState<'dark' | 'light'>('dark');
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     const stored = window.localStorage.getItem('theme') as 'dark' | 'light' | null;
     const resolved = stored || 'dark';
     setTheme(resolved);
-    document.documentElement.classList.toggle('light', resolved === 'light');
+    
+    // Apply the theme
+    if (resolved === 'light') {
+      document.documentElement.classList.remove('dark');
+    } else {
+      document.documentElement.classList.add('dark');
+    }
   }, []);
 
   const toggleTheme = () => {
     const next = theme === 'dark' ? 'light' : 'dark';
     setTheme(next);
     window.localStorage.setItem('theme', next);
-    document.documentElement.classList.toggle('light', next === 'light');
+    
+    // Apply the theme
+    if (next === 'light') {
+      document.documentElement.classList.remove('dark');
+    } else {
+      document.documentElement.classList.add('dark');
+    }
   };
 
+  if (!mounted) {
+    return (
+      <button className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-[#111827]/70 text-slate-200 transition duration-300 hover:bg-white/10 cursor-wait" disabled>
+        <Sun size={18} />
+      </button>
+    );
+  }
+
   return (
-    <Button
-      variant="ghost"
-      size="sm"
+    <button
       onClick={toggleTheme}
-      className={theme === 'light'
-        ? 'h-11 w-11 border border-sky-200 bg-white p-0 text-sky-600 shadow-sm hover:bg-sky-50'
-        : 'h-11 w-11 border border-slate-700 bg-slate-900 p-0 text-slate-100 hover:bg-slate-800'}
+      className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-[#111827]/70 text-slate-200 transition duration-300 hover:bg-white/10 dark:hover:bg-white/20"
+      aria-label="Toggle theme"
     >
-      {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
-    </Button>
+      {theme === 'dark' ? (
+        <Sun size={18} className="transition-transform duration-200" />
+      ) : (
+        <Moon size={18} className="transition-transform duration-200" />
+      )}
+    </button>
   );
 }

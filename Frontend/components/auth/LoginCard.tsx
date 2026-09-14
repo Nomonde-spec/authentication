@@ -16,27 +16,27 @@ export function LoginCard() {
     >
       <div className="flex items-center justify-between">
         <Logo />
-        <span className="rounded-full bg-white/5 px-3 py-1 text-xs uppercase tracking-[0.35em] text-slate-400">Login</span>
+        <span className="rounded-full bg-secondary px-3 py-1 text-xs uppercase tracking-[0.35em] text-muted-foreground">Login</span>
       </div>
 
       <div className="mt-6">
-        <h2 className="text-3xl font-semibold text-white">Welcome back.</h2>
-        <p className="mt-2 text-sm text-slate-400">Sign in to continue to your dashboard.</p>
+        <h2 className="text-3xl font-semibold text-foreground">Welcome back.</h2>
+        <p className="mt-2 text-sm text-muted-foreground">Sign in to continue to your dashboard.</p>
       </div>
 
       <LoginForm />
 
       <div className="mt-6 flex items-center gap-2">
-        <div className="h-px flex-1 bg-[rgba(255,255,255,0.04)]" />
-        <div className="text-xs text-slate-400">OR CONTINUE WITH</div>
-        <div className="h-px flex-1 bg-[rgba(255,255,255,0.04)]" />
+        <div className="h-px flex-1 bg-border" />
+        <div className="text-xs text-muted-foreground">OR CONTINUE WITH</div>
+        <div className="h-px flex-1 bg-border" />
       </div>
 
       <SocialLogin />
 
-      <div className="mt-6 text-center text-sm text-slate-400">
+      <div className="mt-6 text-center text-sm text-muted-foreground">
         Don't have an account?{' '}
-        <Link href="/register" className="text-white underline-offset-4 hover:underline">
+        <Link href="/register" className="text-foreground underline-offset-4 hover:underline">
           Create account
         </Link>
       </div>

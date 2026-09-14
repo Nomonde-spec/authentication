@@ -12,7 +12,7 @@ export function SocialLogin({ onSocialLogin }: SocialLoginProps) {
       <button
         aria-label="Continue with Google"
         onClick={() => onSocialLogin?.('google')}
-        className="flex w-full items-center justify-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-slate-200 transition duration-200 hover:-translate-y-0.5 hover:bg-white/10 shadow-sm shadow-slate-950/20"
+        className="flex w-full items-center justify-center gap-3 rounded-2xl border border-border bg-secondary px-4 py-3 text-sm text-foreground transition duration-200 hover:-translate-y-0.5 hover:bg-accent shadow-sm"
       >
         <Globe size={18} />
         <span>Continue with Google</span>
@@ -20,7 +20,7 @@ export function SocialLogin({ onSocialLogin }: SocialLoginProps) {
       <button
         aria-label="Continue with GitHub"
         onClick={() => onSocialLogin?.('github')}
-        className="flex w-full items-center justify-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-slate-200 transition duration-200 hover:-translate-y-0.5 hover:bg-white/10 shadow-sm shadow-slate-950/20"
+        className="flex w-full items-center justify-center gap-3 rounded-2xl border border-border bg-secondary px-4 py-3 text-sm text-foreground transition duration-200 hover:-translate-y-0.5 hover:bg-accent shadow-sm"
       >
         <Github size={18} />
         <span>Continue with GitHub</span>
@@ -28,7 +28,7 @@ export function SocialLogin({ onSocialLogin }: SocialLoginProps) {
       <button
         aria-label="Continue with Microsoft"
         onClick={() => onSocialLogin?.('microsoft')}
-        className="flex w-full items-center justify-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-slate-200 transition duration-200 hover:-translate-y-0.5 hover:bg-white/10 shadow-sm shadow-slate-950/20"
+        className="flex w-full items-center justify-center gap-3 rounded-2xl border border-border bg-secondary px-4 py-3 text-sm text-foreground transition duration-200 hover:-translate-y-0.5 hover:bg-accent shadow-sm"
       >
         <Monitor size={18} />
         <span>Continue with Microsoft</span>
